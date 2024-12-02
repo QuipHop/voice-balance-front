@@ -11,20 +11,23 @@
     </mat-card>
   
     <!-- Record Button Section -->
-    <div class="recording-section">
-      <button
-        mat-fab
-        color="primary"
-        class="record-btn"
-        (mousedown)="startRecording()"
-        (mouseup)="stopRecording()"
-      >
-        <mat-icon>mic</mat-icon>
-      </button>
-      <p class="recording-status">
-        {{ isRecording ? 'Recording...' : 'Press and hold to record' }}
-      </p>
-    </div>
+<!-- Record Button Section -->
+<div class="recording-section">
+    <button
+      mat-fab
+      color="primary"
+      class="record-btn"
+      aria-label="Start recording"
+      (mousedown)="startRecording()"
+      (mouseup)="stopRecording()"
+    >
+      <mat-icon class="btn-icon">mic</mat-icon>
+    </button>
+    <p class="recording-status">
+      {{ isRecording ? 'Recording...' : 'Press and hold to record' }}
+    </p>
+  </div>
+  
   
     <!-- Inline Flexbox: Categories and Transactions -->
     <div class="inline-section">

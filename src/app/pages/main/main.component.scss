@@ -25,19 +25,41 @@
     border-radius: 50%;
   }
   
+
   .recording-section {
     display: flex;
     flex-direction: column;
     align-items: center;
-    text-align: center;
+    gap: 12px;
+  
+    .record-btn {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 80px; /* FAB default size */
+      height: 80px; /* FAB default size */
+      border-radius: 50%; /* Ensures circular button */
+      overflow: hidden; /* Ensures nothing bleeds out */
+        text-align: center;
+      mat-icon {
+        margin: 0 auto;
+      }
+    }
+  
+    button[mat-fab] mat-icon {
+      font-size: 24px; /* Default icon size for FAB */
+      line-height: 1; /* Ensures the icon is centered vertically */
+      color: white; /* Icon color */
+    }
+  
+    .recording-status {
+      margin-top: 8px;
+      font-size: 14px;
+      color: #757575; /* Optional: Adjust text color */
+    }
   }
   
-  .record-btn {
-    width: 64px;
-    height: 64px;
-    margin-bottom: 8px;
-    text-align: center;
-  }
+  
   
   .recording-status {
     font-size: 1em;
@@ -155,3 +177,5 @@
   mat-list-item .mdc-list-item__content > span {
     display: inline-flex !important;
   }
+
+  
