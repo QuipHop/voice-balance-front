@@ -1,1 +1,23 @@
-/* You can add global styles to this file, and also import other style files */
+@use '@angular/material' as mat;
+@import './styles/material-theme.scss';
+
+body {
+  margin: 0;
+  font-family: 'Roboto', sans-serif;
+  background-color: mat.get-color-from-palette($primary, 50);
+  color: #212121;
+}
+
+.mat-card {
+  border-radius: 12px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+button.mat-fab {
+  background-color: mat.get-color-from-palette($primary);
+  color: white;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }

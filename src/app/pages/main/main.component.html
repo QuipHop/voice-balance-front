@@ -1,0 +1,73 @@
+<div class="main-container">
+    <!-- AI Avatar Section -->
+    <mat-card class="avatar-card">
+      <div class="avatar-content">
+        <img src="assets/avatar.png" alt="AI Avatar" class="ai-avatar" />
+        <div class="greeting-text">
+          <h2>Hello, User!</h2>
+          <p>What would you like to do today?</p>
+        </div>
+      </div>
+    </mat-card>
+  
+    <!-- Record Button Section -->
+    <div class="recording-section">
+      <button
+        mat-fab
+        color="primary"
+        class="record-btn"
+        (mousedown)="startRecording()"
+        (mouseup)="stopRecording()"
+      >
+        <mat-icon>mic</mat-icon>
+      </button>
+      <p class="recording-status">
+        {{ isRecording ? 'Recording...' : 'Press and hold to record' }}
+      </p>
+    </div>
+  
+    <!-- Inline Flexbox: Categories and Transactions -->
+    <div class="inline-section">
+      <!-- Transactions Section -->
+      <mat-card class="transactions-card">
+        <h3>Recent Transactions</h3>
+        <mat-list *ngIf="transactions.length > 0">
+          <mat-list-item *ngFor="let transaction of transactions">
+
+      
+            <!-- Transaction Details -->
+            <div class="transaction-details">
+            <!-- Transaction Icon -->
+            <mat-icon mat-list-icon>
+                {{ transaction.Amount > 0 ? 'add_circle' : 'remove_circle' }}
+              </mat-icon>
+              <!-- Description -->
+              <!-- Amount -->
+              <div mat-line class="amount">
+                {{ transaction.Amount | currency }}
+              </div>
+              <div mat-line class="description">
+                {{ transaction.Description }}
+              </div>
+
+              <!-- Created Date -->
+              <div mat-line class="created-date">
+                {{ transaction.Created_at | date: 'short' }}
+              </div>
+            </div>
+          </mat-list-item>
+        </mat-list>
+      
+        <!-- No Transactions Found -->
+        <p *ngIf="transactions.length === 0" class="no-data">No transactions found.</p>
+      </mat-card>
+      
+  
+      <!-- Categories Section -->
+      <mat-card class="categories-card">
+        <h3>Categories</h3>
+        <app-categories></app-categories>
+      </mat-card>
+    </div>
+  </div>
+  

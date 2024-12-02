@@ -1,0 +1,45 @@
+.sidenav-container {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .app-toolbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 16px;
+    font-size: 20px;
+    font-weight: bold;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  .statistics-sidenav {
+    width: 240px;
+    background-color: #ffffff;
+    padding: 16px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  .statistics-sidenav h2 {
+    font-size: 18px;
+    margin-bottom: 16px;
+  }
+  
+  .statistics-sidenav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  .statistics-sidenav li {
+    margin-bottom: 8px;
+    font-size: 16px;
+  }
+  
+  .content {
+    flex: 1;
+    background-color: #f5f5f5;
+    padding: 16px;
+  }
+  

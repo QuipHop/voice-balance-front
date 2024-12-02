@@ -1,0 +1,33 @@
+<div class="categories-container">
+    <!-- Add Category Form -->
+    <div class="add-category-form">
+      <mat-form-field appearance="outline" class="category-name">
+        <mat-label>Category Name</mat-label>
+        <input matInput [(ngModel)]="newCategoryName" placeholder="Enter category name" />
+      </mat-form-field>
+      <mat-form-field appearance="outline" class="category-name">
+        <mat-label>Category Type</mat-label>
+        <input matInput [(ngModel)]="newCategoryType" placeholder="Enter category name" />
+      </mat-form-field>
+      <button
+        mat-raised-button
+        color="primary"
+        (click)="addCategory()"
+        [disabled]="!newCategoryName || !newCategoryType"
+      >
+        Add Category
+      </button>
+    </div>
+  
+    <!-- List of Categories -->
+    <div class="categories-list">
+      <h3>Categories:</h3>
+      <mat-list>
+        <mat-list-item *ngFor="let category of categories">
+          <div mat-line>{{ category.Name }}</div>
+          <div mat-line class="secondary">{{ category.Type | titlecase }}</div>
+        </mat-list-item>
+      </mat-list>
+    </div>
+</div>
+  

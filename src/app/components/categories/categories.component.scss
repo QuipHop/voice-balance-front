@@ -1,0 +1,26 @@
+.categories-container {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.add-category-form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  max-width: 400px;
+}
+
+.categories-list {
+  margin-top: 20px;
+}
+
+mat-list-item {
+  display: flex;
+  flex-direction: column;
+}
+
+.secondary {
+  color: gray;
+  font-size: 12px;
+}
