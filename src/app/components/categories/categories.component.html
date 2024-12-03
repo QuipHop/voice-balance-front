@@ -21,13 +21,16 @@
   
     <!-- List of Categories -->
     <div class="categories-list">
-      <h3>Categories:</h3>
-      <mat-list>
-        <mat-list-item *ngFor="let category of categories">
-          <div mat-line>{{ category.Name }}</div>
-          <div mat-line class="secondary">{{ category.Type | titlecase }}</div>
-        </mat-list-item>
-      </mat-list>
+        <h3>Categories:</h3>
+        <mat-list>
+          <mat-list-item *ngFor="let category of categories" class="category-item">
+              <div class="category-details">
+               
+                <div mat-line>{{ category.Name }}</div>
+                <div mat-line class="secondary"> <mat-icon mat-list-icon>{{ category.Type === 'доходи' ? 'add_circle' : 'remove_circle' }}</mat-icon> {{ category.Type | titlecase }}</div>
+            </div>
+          </mat-list-item>
+        </mat-list>
     </div>
 </div>
   

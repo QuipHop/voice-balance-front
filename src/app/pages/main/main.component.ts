@@ -63,7 +63,7 @@ export class MainComponent {
   fetchTransactions() {
     this.userService.getTransactions().subscribe({
       next: (data) => {
-        this.transactions = data;
+        this.transactions = data.reverse();
         console.log('Transactions fetched:', data);
       },
       error: (err) => {
@@ -130,7 +130,7 @@ export class MainComponent {
       });
     
       dialogRef.afterClosed().subscribe((confirmed: any) => {
-        if (confirmed) {
+        if (!!confirmed) {
           const cat = this.userService.categories.find(cat => cat.Type == action.type);
           const trans = {
             "amount": parseFloat(action.amount),
