@@ -1,1 +1,24 @@
-<p>statistics works!</p>
+<div class="statistics-container">
+    <mat-card class="statistics-items">
+      <div class="chart-widget">
+        <!-- Income Chart -->
+        <div class="chart-container">
+          <h3>Income</h3>
+          <canvas baseChart
+            [data]="incomeData"
+            [type]="incomeChartType">
+          </canvas>
+        </div>
+  
+        <!-- Outcome Chart -->
+        <div class="chart-container">
+          <h3>Outcome</h3>
+          <canvas baseChart
+            [data]="outcomeData"
+            [type]="outcomeChartType">
+          </canvas>
+        </div>
+      </div>
+    </mat-card>
+  </div>
+  

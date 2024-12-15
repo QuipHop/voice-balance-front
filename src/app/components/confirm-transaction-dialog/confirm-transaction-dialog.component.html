@@ -4,7 +4,7 @@
   <p>Category: <strong>{{ action.category }}</strong></p>
   <p>Type: <strong>{{ action.type }}</strong></p>
 </mat-dialog-content>
-<mat-dialog-actions align="end">
-  <button mat-button (click)="onCancel()">Cancel</button>
-  <button mat-raised-button color="primary" (click)="onConfirm()">Confirm</button>
+<mat-dialog-actions align="end" class="dialog-actions">
+  <button mat-button color="warn" (click)="onCancel()">Cancel</button>
+  <button mat-button color="primary" (click)="onConfirm()">Confirm</button>
 </mat-dialog-actions>

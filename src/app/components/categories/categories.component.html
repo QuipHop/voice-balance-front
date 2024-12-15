@@ -1,36 +1,38 @@
 <div class="categories-container">
-    <!-- Add Category Form -->
-    <div class="add-category-form">
-      <mat-form-field appearance="outline" class="category-name">
-        <mat-label>Category Name</mat-label>
-        <input matInput [(ngModel)]="newCategoryName" placeholder="Enter category name" />
-      </mat-form-field>
-      <mat-form-field appearance="outline" class="category-name">
-        <mat-label>Category Type</mat-label>
-        <input matInput [(ngModel)]="newCategoryType" placeholder="Enter category name" />
-      </mat-form-field>
-      <button
-        mat-raised-button
-        color="primary"
-        (click)="addCategory()"
-        [disabled]="!newCategoryName || !newCategoryType"
-      >
-        Add Category
-      </button>
-    </div>
-  
-    <!-- List of Categories -->
-    <div class="categories-list">
-        <h3>Categories:</h3>
-        <mat-list>
-          <mat-list-item *ngFor="let category of categories" class="category-item">
-              <div class="category-details">
-               
-                <div mat-line>{{ category.Name }}</div>
-                <div mat-line class="secondary"> <mat-icon mat-list-icon>{{ category.Type === 'доходи' ? 'add_circle' : 'remove_circle' }}</mat-icon> {{ category.Type | titlecase }}</div>
-            </div>
-          </mat-list-item>
-        </mat-list>
-    </div>
+  <!-- Add Category Form -->
+  <div class="add-category-form">
+    <mat-form-field appearance="outline" class="form-field">
+      <mat-label>Category Name</mat-label>
+      <input matInput [(ngModel)]="newCategoryName" placeholder="Enter category name" />
+    </mat-form-field>
+    <mat-form-field appearance="outline" class="form-field">
+      <mat-label>Category Type</mat-label>
+      <input matInput [(ngModel)]="newCategoryType" placeholder="Enter category type" />
+    </mat-form-field>
+    <button
+      mat-raised-button
+      color="primary"
+      class="add-category-button"
+      (click)="addCategory()"
+      [disabled]="!newCategoryName || !newCategoryType"
+    >
+      Add Category
+    </button>
+  </div>
+
+  <!-- List of Categories -->
+  <div class="categories-list">
+    <h3>Categories:</h3>
+    <mat-list>
+      <mat-list-item *ngFor="let category of categories">
+        <mat-icon matListItemIcon class="category-icon">
+          {{ category.Type === 'доходи' ? 'add_circle' : 'remove_circle' }}
+        </mat-icon>
+        <!-- <div class="category-details"> -->
+          <div matListItemTitle>{{ category.Name }}</div>
+          <div matListItemLine>{{ category.Type | titlecase }}</div>
+        <!-- </div> -->
+      </mat-list-item>
+    </mat-list>
+  </div>
 </div>
-  

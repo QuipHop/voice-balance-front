@@ -10,6 +10,7 @@ import { UserService } from './services/user.service';
 import { HttpClientModule } from '@angular/common/http';
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
+import { SpinnerComponent } from './spinner/spinner.component';
 
 @Component({
   standalone: true,
@@ -27,6 +28,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
     MatInputModule,
     NgIf,
     HttpClientModule,
+    SpinnerComponent,
   ],
 })
 export class AppComponent {

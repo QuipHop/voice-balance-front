@@ -7,12 +7,11 @@ import { AudioRecordingService } from '../../services/audio-recording-service.se
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { CategoriesComponent } from '../../components/categories/categories.component';
-import { MatToolbar } from '@angular/material/toolbar';
-import { MatDivider } from '@angular/material/divider';
 import { MatList, MatListItem } from '@angular/material/list';
-import { MatSidenav, MatSidenavContainer } from '@angular/material/sidenav';
 import { MatDialog } from '@angular/material/dialog';
 import { ConfirmTransactionDialogComponent } from '../../components/confirm-transaction-dialog/confirm-transaction-dialog.component';
+import { SpinnerService } from '../../spinner.service';
+import { StatisticsComponent } from '../statistics/statistics.component';
 
 @Component({
   standalone: true,
@@ -27,7 +26,8 @@ import { ConfirmTransactionDialogComponent } from '../../components/confirm-tran
     MatIcon,
     MatList,
     MatListItem,
-    CategoriesComponent
+    CategoriesComponent,
+    StatisticsComponent
   ],
 })
 export class MainComponent {
@@ -43,10 +43,12 @@ export class MainComponent {
   constructor(
     private audioRecordingService: AudioRecordingService,
     private userService: UserService,
+    private spinner: SpinnerService,
     private zone: NgZone
   ) {
     // Subscribe to audioBlob$ to automatically handle WAV generation
     this.audioRecordingService.audioBlob$.subscribe((wavBlob) => {
+      this.spinner.show();
       const wavFile = new File([wavBlob], `${new Date().toUTCString()}.wav`, { type: 'audio/wav' });
       console.log('Generated WAV File:', wavFile);
       // Optionally play the audio for verification
@@ -63,14 +65,17 @@ export class MainComponent {
   fetchTransactions() {
     this.userService.getTransactions().subscribe({
       next: (data) => {
-        this.transactions = data.reverse();
-        console.log('Transactions fetched:', data);
+        this.transactions = data
+          .flat()
+          .sort((a, b) => new Date(b.created_at).getTime() - new Date(a.created_at).getTime());
+        console.log('Transactions fetched and sorted:', this.transactions);
       },
       error: (err) => {
         console.error('Error fetching transactions:', err);
       },
     });
   }
+  
 
   async startRecording() {
     try {
@@ -110,9 +115,11 @@ export class MainComponent {
           console.error('Unexpected response format:', response);
         }
         this.fetchTransactions();
+        this.spinner.hide();
       },
       error: (err) => {
         console.error('Error uploading voice:', err);
+        this.spinner.hide();
       },
     });
   }
@@ -131,14 +138,16 @@ export class MainComponent {
     
       dialogRef.afterClosed().subscribe((confirmed: any) => {
         if (!!confirmed) {
-          const cat = this.userService.categories.find(cat => cat.Type == action.type);
+          console.log(this.userService.categories, action);
+          const cat = this.userService.categories.find(cat => cat.Type == action.type && cat.Name == action.category);
+          console.log("cat", cat);
           const trans = {
             "amount": parseFloat(action.amount),
             "categoryID": cat.ID,
-            "description": cat.Type + " " + cat.Name + " " + action.category,
+            "description": cat.Type + " " + cat.Name + " " + action.amount,
             "userID": cat.UserID
           };
-          this.userService.createTransaction(trans).subscribe(() => this.fetchTransactions());
+          if (cat.ID) this.userService.createTransaction(trans).subscribe(() => this.fetchTransactions());
         }
       });
     });
