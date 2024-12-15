@@ -68,7 +68,6 @@ export class MainComponent {
         this.transactions = data
           .flat()
           .sort((a, b) => new Date(b.created_at).getTime() - new Date(a.created_at).getTime());
-        console.log('Transactions fetched and sorted:', this.transactions);
       },
       error: (err) => {
         console.error('Error fetching transactions:', err);

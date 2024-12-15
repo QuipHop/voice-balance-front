@@ -4,8 +4,8 @@
     <div class="avatar-content">
       <img src="assets/avatar.png" alt="AI Avatar" class="ai-avatar" />
       <div class="greeting-text">
-        <h2>Hello, User!</h2>
-        <p>What would you like to do today?</p>
+        <h2>Привіт!</h2>
+        <p>Чим можу допомогти сьогодні?</p>
       </div>
     </div>
   </mat-card>
@@ -29,7 +29,7 @@
       <mat-icon class="btn-icon">mic</mat-icon>
     </button>
     <p class="recording-status">
-      {{ isRecording ? 'Recording...' : 'Press and hold to record' }}
+      {{ isRecording ? 'Запис...' : 'Зажміть для запису' }}
     </p>
   </div>
 
@@ -37,7 +37,7 @@
   <div class="inline-section">
     <!-- Transactions Section -->
     <mat-card class="transactions-card">
-      <h3>Recent Transactions</h3>
+      <h3>Транзакції</h3>
       <mat-list *ngIf="transactions.length > 0">
         <mat-list-item *ngFor="let transaction of transactions">
           <!-- Transaction Details -->
@@ -67,7 +67,6 @@
 
     <!-- Categories Section -->
     <mat-card class="categories-card">
-      <h3>Categories</h3>
       <app-categories></app-categories>
     </mat-card>
   </div>

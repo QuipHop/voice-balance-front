@@ -78,8 +78,8 @@ export class StatisticsComponent implements OnChanges {
     const grouped = transactions
       .filter((tx) => tx.Category.Type.toLowerCase() === type.toLowerCase())
       .reduce((acc: any, tx: any) => {
-        const categoryName = tx.Category.Name;
-        acc[categoryName] = (acc[categoryName] || 0) + tx.Amount;
+        const categoryType = tx.Category.Type.toLowerCase() ;
+        acc[categoryType] = (acc[categoryType] || 0) + tx.Amount;
         return acc;
       }, {});
 
