@@ -4,12 +4,12 @@
     <mat-card>
       <form (ngSubmit)="login()" #loginForm="ngForm">
         <mat-form-field appearance="fill">
-          <mat-label>Email</mat-label>
+          <mat-label>Логін</mat-label>
           <input matInput type="email" [(ngModel)]="email" name="email" required />
         </mat-form-field>
   
         <mat-form-field appearance="fill">
-          <mat-label>Password</mat-label>
+          <mat-label>Пароль</mat-label>
           <input
             matInput
             type="password"
@@ -18,15 +18,16 @@
             required
           />
         </mat-form-field>
-  
         <button
           mat-flat-button
           color="primary"
           type="submit"
           [disabled]="!loginForm.valid"
         >
-          Login
+          Увійти
         </button>
+      <button mat-button color="warn">Реєстрація</button>
+
       </form>
     </mat-card>
   </div>
